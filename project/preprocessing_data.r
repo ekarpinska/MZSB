@@ -12,9 +12,9 @@ vcf@gt
 samples <-vcf@gt[,2:ncol(vcf@gt)]
 ref <- getFIX(vcf)[,4]
 ref
-samples #counting allels
+samples #counting alt allels per human
 class(samples)
-samples[samples =="0|0"] <- 0 #recessive homozygote
+samples[samples =="0|0"] <- 0 
 samples[samples =="0|1"] <- 1 
 samples[samples =="1|0"] <- 1
 samples[samples =="1|1"] <- 2
