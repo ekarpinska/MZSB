@@ -166,3 +166,44 @@ legend(40, 3.0, legend=c(unique(matrix_1[,5191])),
 
 
 #finish of transpose analysis
+                        
+#kmeans
+wss <- (nrow(dpca)-1)*sum(apply(dpca,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(as.matrix(dpca),
+                                     centers=i)$withinss)
+plot(1:15, wss, type="b", xlab="Number of Clusters",
+     ylab="Within groups sum of squares")
+
+# K-Means Cluster Analysis
+k_means <- kmeans(dpca, 4)
+
+umap_plot <- data.frame(x1 = (iris.umap$data[,1]), x2 = (iris.umap$data[,2]), col=k_means$cluster)
+
+ggplot(umap_plot) + geom_point(aes(x=x1, y=x2, color=k_means$cluster))
+                        
+                        
+#tsne k means
+
+
+wss <- (nrow(dpca)-1)*sum(apply(dpca,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(as.matrix(dpca),
+                                     centers=i)$withinss)
+plot(1:15, wss, type="b", xlab="Number of Clusters",
+     ylab="Within groups sum of squares")
+
+# K-Means Cluster Analysis
+k_means <- kmeans(dpca, 3)
+
+#umap kmeans
+wss <- (nrow(dpca)-1)*sum(apply(dpca,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(as.matrix(dpca),
+                                     centers=i)$withinss)
+plot(1:15, wss, type="b", xlab="Number of Clusters",
+     ylab="Within groups sum of squares")
+
+# K-Means Cluster Analysis
+k_means <- kmeans(dpca, 4)
+
+umap_plot <- data.frame(x1 = (a.umap$data[,1]), x2 = (a.umap$data[,2]), col=k_means$cluster)
+
+ggplot(umap_plot) + geom_point(aes(x=x1, y=x2, color=k_means$cluster))
