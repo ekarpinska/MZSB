@@ -177,7 +177,7 @@ plot(1:15, wss, type="b", xlab="Number of Clusters",
 # K-Means Cluster Analysis
 k_means <- kmeans(dpca, 4)
 
-umap_plot <- data.frame(x1 = (iris.umap$data[,1]), x2 = (iris.umap$data[,2]), col=k_means$cluster)
+umap_plot <- data.frame(x1 = (a.umap$data[,1]), x2 = (a.umap$data[,2]), col=k_means$cluster)
 
 ggplot(umap_plot) + geom_point(aes(x=x1, y=x2, color=k_means$cluster))
                         
